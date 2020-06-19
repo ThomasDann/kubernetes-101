@@ -15,13 +15,13 @@ For this, we’re going to use a popular tool called Helm.
 
 We’re going to use Helm to deploy an application using a ‘chart’. First, let’s install Helm into your Kubernetes cluster:
 
-    helm init
+    helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 
 This installs the Helm server into your cluster. It’s called Tiller, because, well, boat stuff.
 
 Now let’s use Helm to install Jenkins:
 
-    helm install stable/jenkins --name my-jenkins
+    helm install my-jenkins stable/jenkins
 
 You can see the status of your installed releases with:
 
@@ -31,7 +31,7 @@ Helm generates a unique release name for every chart you install. Normally you�
 
 Let’s see what Helm just did for us. We can inspect the chart and its values using:
 
-    helm inspect stable/jenkins
+    helm inspect all stable/jenkins
 
 You can see all the work Helm does for us: it defines Kubernetes objects like services, deployments etc. You can customise these by editing the values file and passing it to Helm when you install the chart.
 
